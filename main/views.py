@@ -16,7 +16,7 @@ def index(request):
 
 
 def crawl_data(request, config):
-    if request.method == "GET":
+    if request.method == "POST":
         crawl_config = CrawlConfig.objects.get(id=config)
         crawl_config.crawled = True
         crawl_config.save()
