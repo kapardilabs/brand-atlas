@@ -1,0 +1,1 @@
+web: gunicorn brandatlas.wsgi --log-file -
