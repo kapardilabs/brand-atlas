@@ -13,9 +13,12 @@
         <div class="row">
           <div class="col-md-1">
               <div class="alert alert-secondary">
-                  Brand ID
+                  ID
               </div>
-              <input value="{{ editbrand.id }}" disabled type="text">
+              <div class="alert alert-secondary">{{ editbrand.id }}
+              <input value="{{ editbrand.id }}" type="text" name="brandId" hidden="hidden">
+              </div>
+
           </div>
           <div class="col-md-3">
               <div class="alert alert-secondary">
