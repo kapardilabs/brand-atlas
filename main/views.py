@@ -39,7 +39,7 @@ def crawl_data(request, config):
             no_of_descriptions = len(description)
 
             context.update({"no_of_brands":no_of_brands, "no_of_countries":no_of_countries,
-                            "no_of_descriptions":no_of_descriptions, ""})
+                            "no_of_descriptions":no_of_descriptions})
 
             if no_of_brands == no_of_countries:
                 print("brand == countries")
