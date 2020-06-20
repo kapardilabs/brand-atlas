@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 class Country(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=500)
     flag_icon = models.CharField(max_length=10)
 
     def __str__(self):
@@ -15,9 +15,9 @@ class Country(models.Model):
 
 class CrawlConfig(models.Model):
     url = models.TextField(max_length=15000)
-    brand_selector = models.CharField(max_length=100)
-    country_selector = models.CharField(max_length=100, null=True, blank=True)
-    description_selector = models.CharField(max_length=100, null=True, blank=True)
+    brand_selector = models.CharField(max_length=1000)
+    country_selector = models.CharField(max_length=1000, null=True, blank=True)
+    description_selector = models.CharField(max_length=1000, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     crawled = models.BooleanField(default=False)
     user_agent = models.CharField(max_length=10000, null=True, blank=True,
