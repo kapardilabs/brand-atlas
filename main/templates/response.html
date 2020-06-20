@@ -12,45 +12,33 @@
   </head>
   <body>
   <div class="jumbotron" style="min-height: 100vh;">
-  <h1 class="display-4">Crawl Configs</h1>
-  <p class="lead">Click submit on the confirmed crawl configs.</p>
+  <h1 class="display-4">Response</h1>
+  <p class="lead">Check logs</p>
 <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {{ url }}
+        </div>
+        <div class="col-md-3">
+            {{ no_of_brands }}
+        </div>
+        <div class="col-md-3">
+            {{ no_of_countries }}
+        </div>
+        <div class="col-md-3">
+            {{ no_of_description }}
+        </div>
 
-
-    <table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">URL</th>
-      <th scope="col">Brand Selector</th>
-      <th scope="col">Country Selector</th>
-      <th scope="col">Description Selector</th>
-        <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-  {%  for config in configs %}
-    <tr>
-      <th scope="row"><p class="text-success">{{ config.url }}</p></th>
-      <td><p class="text-warning">{{ config.brand_selector }}</p></td>
-        <td><p class="text-info">{{ config.country_selector }}</p></td>
-      <td><p class="text-danger">{{ config.description_selector }}</p></td>
-    <td>
-        {% if not config.crawled %}
-          <form action="{% url 'main:crawl' config.id %}" method="post">
-          {% csrf_token %}
-              <button class="btn btn-success" type="submit">Crawl Now</button>
-          </form>
-          {% else %}
-              <button class="btn btn-secondary">Crawled</button>
-          {% endif %}
-    </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-
-
+    </div>
+    {% if exception %}
+        <hr/>
+    <div class="row">
+    <div class="alert alert-secondary">Exception</div>
+        <div class="col-md-3">
+            {{ exception }}
+        </div>
+    </div>
+    {% endif %}
 
   </div>
 
