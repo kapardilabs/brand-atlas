@@ -7,58 +7,52 @@
   <p class="lead">Edit brands with Unknown countries</p>
     </div>
     <div class="container-fluid">
+        {% if editbrand %}
+      <form action="{% url 'main:edit' %}" method="post">
+      {% csrf_token %}
         <div class="row">
           <div class="col-md-1">
               <div class="alert alert-secondary">
                   ID
               </div>
+              <div class="alert alert-grey">{{ editbrand.id }}</div>
           </div>
           <div class="col-md-3">
               <div class="alert alert-secondary">
                  Brand Name
+              </div>
+              <div class="alert alert-info">
+                  <input class="form-control" type="text" name="brandName" value="{{ editbrand.name }}" required/>
               </div>
           </div>
           <div class="col-md-2">
               <div class="alert alert-secondary">
                  Actual Country
               </div>
-          </div>
-          <div class="col-md-4">
-              <div class="alert alert-secondary">
-                 Description
-              </div>
-          </div>
-          <div class="col-md-2">
-              <div class="alert alert-secondary">
-                 Action
-              </div>
-          </div>
-      </div>
-        {% if editbrand %}
-        <div class="row">
-
-      <form action="{% url 'main:edit' %}" method="post">
-      {% csrf_token %}
-
-    <div class="col-md-1">{{ editbrand.id }}</div>
-          <div class="col-md-3"><input class="form-control" type="text" name="brandName" value="{{ editbrand.name }}" required/></div>
-
-        <div class="col-md-2"><select name="originCountry" class="form-control" required>
+              <div class="alert alert-info"><select name="originCountry" class="form-control" required>
         <optgroup>
             {% for c in allCountries %}
             <option value="{{ c.id }}">{{ c.name }}</option>
                     {% endfor %}
         </optgroup>
     </select> </div>
-    <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+              <div class="alert alert-secondary">
+                 Description
+              </div>
+              <div class="alert alert-info">
         <input type="text" name="brandDescription" value="{{ editbrand.description }}"/>
     </div>
-
-        <div class="col-md-2"><button type="submit" class="btn btn-success">Submit</button></div>
-
+          </div>
+          <div class="col-md-2">
+              <div class="alert alert-secondary">
+                 Action
+              </div>
+               <div><button type="submit" class="btn btn-success">Submit</button></div>
+          </div>
+      </div>
       </form>
-
-  </div>
         {% endif %}
     </div>
 
