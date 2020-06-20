@@ -14,28 +14,32 @@
   <div class="jumbotron" style="min-height: 100vh;">
   <h1 class="display-4">Response</h1>
   <p class="lead">Check logs</p>
+  <hr/>
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            {{ url }}
+            <div class="alert alert-success">{{ url }}</div>
         </div>
         <div class="col-md-3">
-            {{ no_of_brands }}
+            <div class="alert alert-success">{{ no_of_brands }}</div>
         </div>
         <div class="col-md-3">
-            {{ no_of_countries }}
+            <div class="alert alert-success">{{ no_of_countries }}</div>
         </div>
         <div class="col-md-3">
-            {{ no_of_description }}
+            <div class="alert alert-success"> {{ no_of_description }}</div>
         </div>
 
     </div>
     {% if exception %}
         <hr/>
     <div class="row">
-    <div class="alert alert-secondary">Exception</div>
+    <div class="col-md-3">
+    <div class="alert alert-secondary">Error</div>
+    </div>
         <div class="col-md-3">
-            {{ exception }}
+            <div class="alert alert-danger"> {{ exception }}</div>
+
         </div>
     </div>
     {% endif %}
