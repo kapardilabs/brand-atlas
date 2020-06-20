@@ -32,13 +32,13 @@
               <div class="alert alert-secondary">
                  Actual Country
               </div>
-              <div class="alert alert-info"><select name="originCountry" class="form-control" required>
-        <optgroup>
-            {% for c in allCountries %}
-            <option value="{{ c.id }}">{{ c.name }}</option>
+              <div class="alert alert-info"><input name="originCountry" list="countries" class="form-control" required/>
+                <datalist id="countries">
+                    {% for c in allCountries %}
+            <option value="{{ c.name }}">{{ c.name }}</option>
                     {% endfor %}
-        </optgroup>
-    </select> </div>
+                </datalist>
+             </div>
           </div>
           <div class="col-md-4">
               <div class="alert alert-secondary">
