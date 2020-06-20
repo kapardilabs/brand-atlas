@@ -73,6 +73,6 @@ def edit_brand(request):
         changed_country = request.POST.get("originCountry", None)
         changed_description = request.POST.get("brandDescription",None)
         expected_country = Country.objects.get_or_create(name=changed_country)
-        Brand.objects.filter(id=entry_id).update(name=changed_name, origin_country=expected_country, description=str(changed_description))
+        Brand.objects.filter(id=entry_id).update(name=changed_name, origin_country=expected_country[0], description=str(changed_description))
 
         return redirect("main:edit")
