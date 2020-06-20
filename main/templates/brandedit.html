@@ -13,23 +13,28 @@
         <th scope="col">Brand ID</th>
       <th scope="col">Brand</th>
       <th scope="col">Actual Country</th>
+        <th scope="col">Brand Description</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
   {% if editbrand %}
       <form action="{% url 'main:edit' %}" method="post">
+      {% csrf_token %}
     <tr>
     <td>{{ editbrand.id }}</td>
       <td><input class="form-control" type="text" name="brandName" value="{{ editbrand.name }}" required/>
 
-        <td><select name="originCountry" class="form-control">
+        <td><select name="originCountry" class="form-control" required>
         <optgroup>
             {% for c in allCountries %}
             <option value="{{ c.id }}">{{ c.name }}</option>
                     {% endfor %}
         </optgroup>
     </select> </td>
+    <td>
+        <input type="text" name="brandDescription" value="{{ editbrand.description }}">
+    </td>
 
         <td><button type="submit" class="btn btn-success">Submit</button></td>
 
