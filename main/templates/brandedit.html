@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <div class="jumbotron" style="margin-bottom: 0;">
+    <div class="jumbotron">
   <h1 class="display-4">Edit Brands</h1>
   <p class="lead">Edit brands with Unknown countries</p>
     </div>
@@ -15,7 +15,7 @@
               <div class="alert alert-secondary">
                   ID
               </div>
-              <div class="alert alert-grey">{{ editbrand.id }}</div>
+              <div class="alert alert-secondary">{{ editbrand.id }}</div>
           </div>
           <div class="col-md-3">
               <div class="alert alert-secondary">
@@ -42,14 +42,14 @@
                  Description
               </div>
               <div class="alert alert-info">
-        <input type="text" name="brandDescription" value="{{ editbrand.description }}"/>
+        <input type="text" class="form-control" name="brandDescription" value="{{ editbrand.description }}"/>
     </div>
           </div>
           <div class="col-md-2">
               <div class="alert alert-secondary">
                  Action
               </div>
-               <div><button type="submit" class="btn btn-success">Submit</button></div>
+               <div class="text-center"><button type="submit" class="btn btn-success">Submit</button></div>
           </div>
       </div>
       </form>
