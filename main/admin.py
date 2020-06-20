@@ -4,18 +4,16 @@ from import_export.admin import ImportExportModelAdmin
 
 
 # Register your models here.
+@admin.register(CrawlConfig)
 class ConfigAdmin(ImportExportModelAdmin):
-    resource_class = CrawlConfig
+    pass
 
 
+@admin.register(Brand)
 class BrandAdmin(ImportExportModelAdmin):
-    resource_class = Brand
+    pass
 
 
+@admin.register(Country)
 class CountryAdmin(ImportExportModelAdmin):
-    resource_class = Country
-
-
-admin.site.register(CrawlConfig, ConfigAdmin)
-admin.site.register(Country, CountryAdmin)
-admin.site.register(Brand, BrandAdmin)
+    pass
