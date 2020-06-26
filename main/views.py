@@ -76,9 +76,14 @@ def create_brand(request):
             parent_brand_string = request.POST.get("parentBrand", None)
             category = Category.objects.get_or_create(name=category_string)
             expected_country = Country.objects.get(name=changed_country)
-            parent_brand = Brand.objects.get(id=parent_brand_string)
-            Brand.objects.create(name=name, origin_country=expected_country, logo=logo_url,
-                                 description=str(changed_description), category=category[0], parent=parent_brand)
+            if parent_brand_string != "None":
+                parent_brand = Brand.objects.get(id=parent_brand_string)
+                Brand.objects.create(name=name, origin_country=expected_country, logo=logo_url,
+                                     description=str(changed_description), category=category[0], parent=parent_brand)
+            else:
+                Brand.objects.create(name=name, origin_country=expected_country, logo=logo_url,
+                                     description=str(changed_description), category=category[0])
+
             messages.success(request, "Brand Created!")
         except Exception as e:
             messages.error(request, str(e))

@@ -71,7 +71,7 @@
                         <h5>Parent Company</h5>
                         <div class="alert alert-secondary">
                             <select name="parentBrand" class="form-control" id="sourceParent">
-                            <option selected></option>
+                            <option value="None" selected></option>
                                 {% for b in allBrands %}
                                 <option value="{{ b.id }}">{{ b.name }}</option>
                                 {% endfor %}
