@@ -1,0 +1,117 @@
+{% extends "sb-admin/index.html" %}
+        <!-- Begin Page Content -->
+          {% block content %}
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Edicards</h1>
+              <a href="{% url 'main:create' %}" class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add Brand <b>(+)</b> </a>
+
+          </div>
+
+
+          <div class="row">
+
+              <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+
+              <!-- Basic Card Example -->
+              <div class="card shadow mb-4">
+                <form method="post" action="{% url 'main:edit' editbrand.id %}">
+                {% csrf_token %}
+                     <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <h5>Brand Name</h5>
+                    <div class="alert alert-primary">
+                  <input class="form-control" type="text" name="brandName" value="{{ editbrand.name }}" required/>
+                    </div>
+                    </div>
+                    </div>
+
+                     <div class="col-md-6">
+                        <div class="form-group">
+                        <h5>Logo URL</h5>
+                    <div class="alert alert-info">
+                  <input class="form-control" type="text" name="logoUrl" value="{{ editbrand.logo }}" required/>
+                    </div>
+                    </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                     <div class="col-xs-4 col-md-4">
+                        <div class="form-group">
+                        <h5>Country</h5>
+                        <div class="alert alert-warning">
+                            <select name="originCountry" class="form-control" id="sourceCountry" required>
+                                {% for c in allCountries %}
+                                <option value="{{ c.name }}">{{ c.name }}</option>
+                                {% endfor %}
+                            </select>
+                         </div>
+                    </div>
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                    <div class="form-group">
+                        <h5>Category</h5>
+                        <div class="alert alert-success">
+                            <select name="category" class="form-control" id="sourceCategory" required>
+                                {% for c in allCategories %}
+                                <option value="{{ c.name }}">{{ c.name }}</option>
+                                {% endfor %}
+                            </select>
+                         </div>
+                    </div>
+                </div>
+                    <div class="col-xs-4 col-md-4">
+                    <div class="form-group">
+                        <h5>Parent Company</h5>
+                        <div class="alert alert-secondary">
+                            <select name="parentBrand" class="form-control" id="sourceParent">
+                               {% if editbrand.parent %}
+                                   <option value="{{ editbrand.parent.id }}">{{ editbrand.parent.name }}</option>
+                               {% else %}
+                                   <option value="None"></option>
+                               {% endif %}
+
+                                {% for b in allBrands %}
+                                <option value="{{ b.id }}">{{ b.name }}</option>
+                                {% endfor %}
+                            </select>
+                         </div>
+                    </div>
+                </div>
+                </div>
+
+
+
+                <h5>Description</h5>
+                 <div class="alert alert-danger">
+                    <input type="text" class="form-control" name="brandDescription" value="{{ editbrand.description }}"/>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col text-center">
+                        <a href="{% url 'main:index' %}" class="btn btn-warning">Cancel</a>
+
+                    </div>
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                     <div class="col"></div>
+                </div>
+                </div>
+                </form>
+
+              </div>
+
+            </div>
+              <div class="col-lg-3"></div>
+
+          </div>
+
+        </div>
+          {% endblock %}

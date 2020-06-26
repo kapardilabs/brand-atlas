@@ -3,12 +3,6 @@ from .models import *
 from import_export.admin import ImportExportModelAdmin
 
 
-# Register your models here.
-@admin.register(CrawlConfig)
-class ConfigAdmin(ImportExportModelAdmin):
-    pass
-
-
 @admin.register(Brand)
 class BrandAdmin(ImportExportModelAdmin):
     pass
@@ -16,4 +10,9 @@ class BrandAdmin(ImportExportModelAdmin):
 
 @admin.register(Country)
 class CountryAdmin(ImportExportModelAdmin):
+    pass
+
+
+@admin.register(Category)
+class CategoryAdmin(ImportExportModelAdmin):
     pass

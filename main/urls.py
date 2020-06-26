@@ -5,6 +5,7 @@ app_name = "main"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("crawl/<int:config>", views.crawl_data, name="crawl"),
-    path("edit", views.edit_brand, name="edit")
+    path("create/", views.create_brand, name="create"),
+    path("edit/<int:brand_id>", views.edit_brand, name="edit"),
+    path("finalize/<int:brand_id>", views.finalise_brand, name="finalize")
 ]

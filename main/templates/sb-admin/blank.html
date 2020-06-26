@@ -1,0 +1,189 @@
+{% extends "sb-admin/index.html" %}
+        <!-- Begin Page Content -->
+          {% block content %}
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Creacards</h1>
+              <a href="{% url 'main:create' %}" class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add Brand <b>(+)</b> </a>
+
+          </div>
+
+
+          <div class="row">
+
+              <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+
+              <!-- Basic Card Example -->
+              <div class="card shadow mb-4">
+                <form method="post" action="{% url 'main:create' %}">
+                {% csrf_token %}
+                     <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <h5>Brand Name</h5>
+                    <div class="alert alert-primary">
+                  <input class="form-control" type="text" name="brandName" id="sourceName" required/>
+                    </div>
+                    </div>
+                    </div>
+
+                     <div class="col-md-6">
+                        <div class="form-group">
+                        <h5>Logo URL</h5>
+                    <div class="alert alert-info">
+                  <input class="form-control" type="text" name="logoUrl" id="sourceUrl"  required/>
+                    </div>
+                    </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-md-4">
+                        <div class="form-group">
+                        <h5>Country</h5>
+                        <div class="alert alert-warning">
+                            <select name="originCountry" class="form-control" id="sourceCountry" required>
+                                {% for c in allCountries %}
+                                <option value="{{ c.name }}">{{ c.name }}</option>
+                                {% endfor %}
+                            </select>
+                         </div>
+                    </div>
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                    <div class="form-group">
+                        <h5>Category</h5>
+                        <div class="alert alert-success">
+                            <select name="category" class="form-control" id="sourceCategory" required>
+                                {% for c in allCategories %}
+                                <option value="{{ c.name }}">{{ c.name }}</option>
+                                {% endfor %}
+                            </select>
+                         </div>
+                    </div>
+                </div>
+                    <div class="col-xs-4 col-md-4">
+                    <div class="form-group">
+                        <h5>Parent Company</h5>
+                        <div class="alert alert-secondary">
+                            <select name="parentBrand" class="form-control" id="sourceParent">
+                            <option selected></option>
+                                {% for b in allBrands %}
+                                <option value="{{ b.id }}">{{ b.name }}</option>
+                                {% endfor %}
+                            </select>
+                         </div>
+                    </div>
+                </div>
+                </div>
+
+
+
+                <h5>Description</h5>
+                 <div class="alert alert-danger">
+                    <input type="text" class="form-control" id="sourceDesc" name="brandDescription"/>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col text-center">
+                        <a href="{% url 'main:index' %}" class="btn btn-warning">Cancel</a>
+
+                    </div>
+                    <!-- Button trigger modal -->
+                        <button type="button" onclick="populateMock();" class="btn btn-success" data-toggle="modal" data-target="#createModal">
+                          Create
+                        </button>
+                            <!-- Modal -->
+                        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content ">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Create Brand</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                <div class="modal-body">
+                                   <h5> Do you want to create the brand with following details?</h5>
+                                    <div class="row">
+
+                                        <div class="col">
+                                          <div class="card border-left-primary shadow h-100 py-2">
+                                            <div class="card-body">
+                                              <div class="row no-gutters align-items-center">
+                                                <div class="col text-center mr-2">
+                                                    <img src="" id="mockLogo" style="height: 20%; width: 20%;">
+                                                    <hr/>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="mockName"> </div>
+                                                </div>
+                                              </div>
+                                                <br/>
+                                                <div class="row no-gutters align-items-center">
+                                                <div class="col text-center mr-2">
+                                                       <h6 id="mockCountry"></h6>
+                                                    </div>
+                                            </div>
+                                            <br/>
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col text-center mr-2" id="mockDescription"></div>
+                                                    <div class="col text-center mr-2 border-left">
+                                                        <div class="text-center">
+                                                    <button type="button" class="btn btn-warning">Edit</button>
+                                                    </div>
+                                                    </div>
+                                                    <div class="col text-center mr-2 border-left">
+                                                        <div class="text-center">
+                                                   <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-success">
+                                                      Finalize
+                                                    </button>
+
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success">Save changes</button>
+                                </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                     <div class="col"></div>
+                </div>
+                </div>
+                </form>
+
+              </div>
+
+            </div>
+              <div class="col-lg-3"></div>
+
+          </div>
+
+        </div>
+              <script>
+                function populateMock() {
+                    let mockLogo = document.getElementById("sourceUrl").value;
+                    let mockName = document.getElementById("sourceName").value;
+                    let mockCountry = document.getElementById("sourceCountry").value;
+                    let mockDescription = document.getElementById("sourceDesc").value;
+
+                    document.getElementById("mockLogo").setAttribute("src",mockLogo);
+                    document.getElementById("mockName").innerHTML = mockName;
+                    document.getElementById("mockCountry").innerHTML = mockCountry;
+                    document.getElementById("mockDescription").innerHTML = mockDescription;
+                }
+              </script>
+          {% endblock %}
