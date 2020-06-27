@@ -105,10 +105,10 @@ def edit_brand(request, brand_id):
             changed_name = request.POST.get("brandName", None)
             logo_url = request.POST.get("logoUrl", None)
             category_string = request.POST.get("category", None)
-            changed_country = request.POST.get("originCountry", None)
+            country_id = request.POST.get("originCountry", None)
             changed_description = request.POST.get("brandDescription", None)
             parent_brand_string = request.POST.get("parentBrand", None)
-            expected_country = Country.objects.get(name=changed_country)
+            expected_country = Country.objects.get(id=country_id)
             category = Category.objects.get(name=category_string)
             if parent_brand_string != "None":
                 parent_brand = Brand.objects.get(id=parent_brand_string)

@@ -47,8 +47,9 @@
                         <h5>Country</h5>
                         <div class="alert alert-warning">
                             <select name="originCountry" class="form-control" id="sourceCountry" required>
+                                <option value="{{ editbrand.origin_country.id }}" selected>{{ editbrand.origin_country.name }}</option>
                                 {% for c in allCountries %}
-                                <option value="{{ c.name }}">{{ c.name }}</option>
+                                <option value="{{ c.id }}">{{ c.name }}</option>
                                 {% endfor %}
                             </select>
                          </div>
