@@ -74,7 +74,7 @@
                             <select name="parentBrand" class="form-control" id="sourceParent">
                             <option value="None">None</option>
                                {% if editbrand.parent %}
-                                   <option value="{{ editbrand.parent.id }}">{{ editbrand.parent.name }}</option>
+                                   <option value="{{ editbrand.parent.id }}" selected>{{ editbrand.parent.name }}</option>
                                {% endif %}
 
                                 {% for b in allBrands %}
