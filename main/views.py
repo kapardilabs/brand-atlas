@@ -139,7 +139,6 @@ def finalise_brand(request, brand_id):
     return redirect("main:index")
 
 def log_headers(request):
-    headers = request.headers
-    meta = request.META
-    context = {"headers":headers, "meta":meta}
+    headers = str(request.headers)
+    context = {"headers":headers}
     return render(request,"resp.html",context)
