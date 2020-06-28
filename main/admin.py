@@ -16,3 +16,8 @@ class CountryAdmin(ImportExportModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(ImportExportModelAdmin):
     pass
+
+
+@admin.register(Messages)
+class MessageAdmin(ImportExportModelAdmin):
+    pass

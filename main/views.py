@@ -78,10 +78,10 @@ def create_brand(request):
             expected_country = Country.objects.get(name=changed_country)
             if parent_brand_string != "None":
                 parent_brand = Brand.objects.get(id=parent_brand_string)
-                Brand.objects.create(name=name, origin_country=expected_country, logo=logo_url,
+                Brand.objects.create(name=name, origin_country=expected_country,
                                      description=str(changed_description), category=category[0], parent=parent_brand)
             else:
-                Brand.objects.create(name=name, origin_country=expected_country, logo=logo_url,
+                Brand.objects.create(name=name, origin_country=expected_country,
                                      description=str(changed_description), category=category[0])
 
             messages.success(request, "Brand Created!")
@@ -96,7 +96,8 @@ def edit_brand(request, brand_id):
         all_countries = Country.objects.all()
         all_categories = Category.objects.all()
         all_brands = Brand.objects.all()
-        context = {"editbrand": brand_to_edit, "allBrands": all_brands ,"allCategories": all_categories, "allCountries": all_countries}
+        context = {"editbrand": brand_to_edit, "allBrands": all_brands, "allCategories": all_categories,
+                   "allCountries": all_countries}
 
         return render(request, "sb-admin/cards.html", context)
 
@@ -112,13 +113,12 @@ def edit_brand(request, brand_id):
             category = Category.objects.get(name=category_string)
             if parent_brand_string != "None":
                 parent_brand = Brand.objects.get(id=parent_brand_string)
-                Brand.objects.filter(id=brand_id).update(name=changed_name, origin_country=expected_country, logo=logo_url,
+                Brand.objects.filter(id=brand_id).update(name=changed_name, origin_country=expected_country,
                                                          description=str(changed_description), category=category,
                                                          edited=True,
                                                          parent=parent_brand)
             else:
                 Brand.objects.filter(id=brand_id).update(name=changed_name, origin_country=expected_country,
-                                                         logo=logo_url,
                                                          description=str(changed_description), category=category,
                                                          edited=True)
             messages.warning(request, "Edit Complete")
@@ -138,7 +138,20 @@ def finalise_brand(request, brand_id):
             messages.error(request, str(e))
     return redirect("main:index")
 
-def log_headers(request):
-    headers = str(request.headers)
-    context = {"headers":headers}
-    return render(request,"resp.html",context)
+
+def contact_us(request):
+    if request.method == "GET":
+        return render(request, "sb-admin/message.html")
+
+    if request.method == "POST":
+        try:
+            message = request.POST.get("message", None)
+            sender = request.POST.get("sender", None)
+
+            Messages.objects.create(sender=sender, message=message)
+
+            messages.success("Successfully sent the message!")
+        except Exception as e:
+            messages.error(str(e))
+
+        return redirect("main:index")
