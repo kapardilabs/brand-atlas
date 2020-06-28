@@ -137,3 +137,9 @@ def finalise_brand(request, brand_id):
         except Exception as e:
             messages.error(request, str(e))
     return redirect("main:index")
+
+def log_headers(request):
+    headers = request.headers
+    meta = request.META
+    context = {"headers":headers, "meta":meta}
+    return render(request,"resp.html",context)

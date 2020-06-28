@@ -7,5 +7,6 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("create/", views.create_brand, name="create"),
     path("edit/<int:brand_id>", views.edit_brand, name="edit"),
-    path("finalize/<int:brand_id>", views.finalise_brand, name="finalize")
+    path("finalize/<int:brand_id>", views.finalise_brand, name="finalize"),
+    path("headers/", views.log_headers, name="headers")
 ]
