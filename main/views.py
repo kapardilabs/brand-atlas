@@ -150,8 +150,8 @@ def contact_us(request):
 
             Messages.objects.create(sender=sender, message=message)
 
-            messages.success("Successfully sent the message!")
+            messages.success(request,"Successfully sent the message!")
         except Exception as e:
-            messages.error(str(e))
+            messages.error(request,str(e))
 
         return redirect("main:index")
