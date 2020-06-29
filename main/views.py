@@ -110,7 +110,7 @@ def edit_brand(request, brand_id):
             changed_description = request.POST.get("brandDescription", None)
             parent_brand_string = request.POST.get("parentBrand", None)
             expected_country = Country.objects.get(id=country_id)
-            category = Category.objects.get(name=category_string)
+            category = Category.objects.get_or_create(name=category_string)
             if parent_brand_string != "None":
                 parent_brand = Brand.objects.get(id=parent_brand_string)
                 Brand.objects.filter(id=brand_id).update(name=changed_name, origin_country=expected_country,
