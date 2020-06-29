@@ -30,16 +30,16 @@
                     </div>
                     </div>
                     </div>
-
-{#                     <div class="col-md-6">#}
-{#                        <div class="form-group">#}
-{#                        <h5>Logo URL</h5>#}
-{#                    <div class="alert alert-info">#}
-{#                  <input class="form-control" type="text" name="logoUrl" id="sourceUrl"  required/>#}
-{#                    </div>#}
-{#                    </div>#}
-{#                    </div>#}
-
+                {% if user.is_superuser %}
+                     <div class="col-md-6">
+                        <div class="form-group">
+                        <h5>Logo URL</h5>
+                    <div class="alert alert-info">
+                  <input class="form-control" type="text" name="logoUrl" id="sourceUrl"  required/>
+                    </div>
+                    </div>
+                    </div>
+                {% endif %}
                 </div>
                 <div class="row">
                     <div class="col-xs-4 col-md-4">
@@ -179,8 +179,9 @@
                     let mockName = document.getElementById("sourceName").value;
                     let mockCountry = document.getElementById("sourceCountry").value;
                     let mockDescription = document.getElementById("sourceDesc").value;
-
-                    document.getElementById("mockLogo").setAttribute("src",mockLogo);
+                    if(mockLogo){
+                        document.getElementById("mockLogo").setAttribute("src",mockLogo);
+                    }
                     document.getElementById("mockName").innerHTML = mockName;
                     document.getElementById("mockCountry").innerHTML = mockCountry;
                     document.getElementById("mockDescription").innerHTML = mockDescription;
