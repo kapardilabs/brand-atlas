@@ -89,12 +89,12 @@
           <div class="row">
 
             {% for brand in allBrands %}
-            <div class="col-xl-3 col-md-4 mb-4">
+            <div class="col-xl-2 col-md-2 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col text-center mr-2">
-                        <img src="{{ brand.logo }}" style="max-height: 50px; max-width: 60px;">
+                        <img src="{{ brand.logo }}" style="max-height: 50px; max-width: 60px;" alt="{{ brand.name }}'s logo">
                         <hr/>
                     <div class="h5 mb-0 font-weight-bold text-gray-800"> ( {{ brand.name }} )</div>
                     </div>
@@ -130,11 +130,19 @@
 
                               <div class="row">
                                   <div class="col">
-                                      Name:
-                                      <h3>{{ brand.name }}</h3>
+                                    <div class="row">
+                                        <div class="col">
+                                           <img src="{{ brand.logo }}" style="max-height: 50px; max-width: 60px;" alt="{{ brand.name }}'s logo">
+                                        </div>
+                                        <div class="col">
+                                             Name:
+                                      <h3 class="text-dark">{{ brand.name }}</h3>
+                                        </div>
+                                    </div>
+
                                       <hr/>
                                      Description:
-                                     <h5>  {% if brand.description %}
+                                     <h5 class="text-dark">{% if brand.description %}
                                  {{ brand.description }}
                                     {% else %}
                                     No Description
@@ -209,7 +217,7 @@
                 </div>
               </div>
             </div>
-                {% if forloop.counter|divisibleby:4 %}
+                {% if forloop.counter|divisibleby:6 %}
             </div>
             <div class="row">
                 {% endif %}
