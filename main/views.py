@@ -114,12 +114,12 @@ def edit_brand(request, brand_id):
             if parent_brand_string != "None":
                 parent_brand = Brand.objects.get(id=parent_brand_string)
                 Brand.objects.filter(id=brand_id).update(name=changed_name, origin_country=expected_country,
-                                                         description=str(changed_description), category=category,
+                                                         description=str(changed_description), category=category[0],
                                                          edited=True,
                                                          parent=parent_brand)
             else:
                 Brand.objects.filter(id=brand_id).update(name=changed_name, origin_country=expected_country,
-                                                         description=str(changed_description), category=category,
+                                                         description=str(changed_description), category=category[0],
                                                          edited=True)
             messages.warning(request, "Edit Complete")
         except Exception as e:

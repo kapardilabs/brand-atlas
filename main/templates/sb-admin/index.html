@@ -89,7 +89,7 @@
           <div class="row">
 
             {% for brand in allBrands %}
-            <div class="col-xl-2 col-md-2 mb-4">
+            <div class="col-xl-3 col-md-3 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -132,7 +132,8 @@
                                   <div class="col">
                                     <div class="row">
                                         <div class="col" style="padding: 10% 0;">
-                                           <img src="{{ brand.logo }}" style="max-height: 50px; max-width: 60px;" alt="{{ brand.name }}'s logo">
+                                            Logo:
+                                           <img class="img" src="{{ brand.logo }}" style="max-height: 50px; max-width: 60px;" alt="{{ brand.name }}'s logo">
                                         </div>
                                         <div class="col">
                                              Name:
@@ -218,7 +219,7 @@
                 </div>
               </div>
             </div>
-                {% if forloop.counter|divisibleby:6 %}
+                {% if forloop.counter|divisibleby:4 %}
             </div>
             <div class="row">
                 {% endif %}
