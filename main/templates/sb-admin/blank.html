@@ -175,16 +175,20 @@
         </div>
               <script>
                 function populateMock() {
-                    let mockLogo = document.getElementById("sourceUrl").value;
+                    let definitionLogo = document.getElementById("sourceUrl");
+                    let mockLogo;
+                    if(definitionLogo){
+                        mockLogo = definitionLogo.value;
+                    }
+                    else{
+                        mockLogo = "https://raw.githubusercontent.com/gilga98/ododata/master/sample_logo.png";
+                    }
+
                     let mockName = document.getElementById("sourceName").value;
                     let mockCountry = document.getElementById("sourceCountry").value;
                     let mockDescription = document.getElementById("sourceDesc").value;
-                    if(mockLogo){
-                        document.getElementById("mockLogo").setAttribute("src",mockLogo);
-                    }
-                    else{
-                        document.getElementById("mockLogo").setAttribute("src","https://raw.githubusercontent.com/gilga98/ododata/master/sample_logo.png");
-                    }
+
+                    document.getElementById("mockLogo").setAttribute("src",mockLogo);
                     document.getElementById("mockName").innerHTML = mockName;
                     document.getElementById("mockCountry").innerHTML = mockCountry;
                     if(mockDescription){
