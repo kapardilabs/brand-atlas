@@ -88,7 +88,8 @@
 
         <div class="content-wrapper">
             <div class="alert alert-primary">
-                <input type="text" maxlength="100" id="uni-search" class="form-control" onkeyup="handleSearchKeyUp();">
+                <input type="text" maxlength="100" id="uni-search" class="form-control"
+                       onkeyup="handleSearchKeyUp();" placeholder="Search a phrase in your brand or country ...">
             </div>
             <!-- Content Row -->
           <div class="row shuffle-row">
@@ -287,8 +288,9 @@
     function handleSearchKeyUp() {
 
         var searchString = document.getElementById("uni-search").value;
+        console.log("User Searching " + searchString);
         shuffleInstance.filter(function(element){
-            return element.getAttribute("data-title").includes(searchString) || element.getAttribute("data-country").includes(searchString);
+            return (element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase().indexOf(searchString)!== -1;
         });
 
     }
