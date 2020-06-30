@@ -102,7 +102,7 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col text-center mr-2">
-                        <img src="{{ brand.logo }}" style="max-height: 50px; max-width: 60px;" alt="{{ brand.name }}'s logo">
+                        <img src="{{ brand.logo }}" style="max-height: 50px;" alt="{{ brand.name }}'s logo">
                         <hr/>
                     <div class="h5 mb-0 font-weight-bold text-gray-800"> ( {{ brand.name }} )</div>
                     </div>
@@ -291,9 +291,7 @@
 
         var searchString = document.getElementById("uni-search").value;
         shuffleInstance.filter(function(element){
-            console.log(searchString);
-            console.log((element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase());
-            return (element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase().indexOf(searchString) !== -1;
+            return (element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase().indexOf(searchString.toLowerCase()) !== -1;
         });
 
     }
