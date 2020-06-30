@@ -87,17 +87,18 @@
         {% endif %}
 
         <div class="content-wrapper">
+
             <div class="alert alert-primary">
                 <input type="text" maxlength="100" id="uni-search" class="form-control"
                        onkeyup="handleSearchKeyUp();" placeholder="Search a phrase in your brand or country ...">
             </div>
-            <!-- Content Row -->
-        <div class="">
+
 
             <div class="row shuffle-container">
 
             {% for brand in allBrands %}
-            <div class="col-xl-3 col-md-3 mb-4 brand-item" data-country="{{ brand.origin_country }}" data-title="{{ brand.name }}">
+
+                <div class="col-xl-3 col-md-3 mb-4 brand-item" data-country="{{ brand.origin_country }}" data-title="{{ brand.name }}">
                 <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -227,11 +228,9 @@
                 </div>
               </div>
             </div>
-              {% endfor %}
+
+            {% endfor %}
               </div>
-
-
-        </div>
 
         </div>
 

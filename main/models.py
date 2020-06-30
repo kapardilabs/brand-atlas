@@ -23,7 +23,6 @@ class Country(models.Model):
 
 class Brand(models.Model):
     name = models.CharField(max_length=1000)
-    oc = models.ManyToManyField(Country)
     origin_country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
     description = models.TextField(max_length=1500, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
