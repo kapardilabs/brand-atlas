@@ -284,9 +284,9 @@
 
         });
 
-    function handleSearchKeyUp(e) {
+    function handleSearchKeyUp() {
 
-        var searchString = e.target.value;
+        var searchString = document.getElementById("uni-search").value;
         shuffleInstance.filter(function(element){
             return element.getAttribute("data-title").includes(searchString) || element.getAttribute("data-country").includes(searchString);
         });
