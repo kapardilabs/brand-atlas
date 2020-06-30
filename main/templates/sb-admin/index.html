@@ -295,7 +295,7 @@
                     all_columns[i].getAttribute("data-country")
                     ).toLowerCase().indexOf(searchString.toLowerCase()) !== -1 ){
 
-                    brandRow.appendChild(all_columns[i]);
+                    brandRow.innerHTML += all_columns[i].outerHTML;
                 }
             }
         }
@@ -305,7 +305,7 @@
             for( let i ; i< all_columns.length; i++){
                 if(true){
 
-                    brandRow.appendChild(all_columns[i]);
+                    brandRow.innerHTML += all_columns[i].outerHTML;
                 }
             }
         }
