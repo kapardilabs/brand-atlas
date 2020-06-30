@@ -182,9 +182,18 @@
                     if(mockLogo){
                         document.getElementById("mockLogo").setAttribute("src",mockLogo);
                     }
+                    else{
+                        document.getElementById("mockLogo").setAttribute("src","https://raw.githubusercontent.com/gilga98/ododata/master/sample_logo.png");
+                    }
                     document.getElementById("mockName").innerHTML = mockName;
                     document.getElementById("mockCountry").innerHTML = mockCountry;
-                    document.getElementById("mockDescription").innerHTML = mockDescription;
+                    if(mockDescription){
+                         document.getElementById("mockDescription").innerHTML = mockDescription;
+                    }
+                    else {
+                        document.getElementById("mockDescription").innerHTML = "No Description";
+                    }
+
                 }
               </script>
           {% endblock %}
