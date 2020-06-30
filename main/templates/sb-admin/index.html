@@ -277,25 +277,25 @@
     });
     </script>
 
- <script>
-        var Shuffle = window.Shuffle;
-        var element = document.querySelector('.shuffle-container');
-
-        var shuffleInstance = new Shuffle(element, {
-          itemSelector: '.brand-item'
-
-        });
-
-    function handleSearchKeyUp() {
-
-        var searchString = document.getElementById("uni-search").value;
-        shuffleInstance.filter(function(element){
-            return (element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase().indexOf(searchString.toLowerCase()) !== -1;
-        });
-
-    }
-
-</script>
+{# <script>#}
+{#        var Shuffle = window.Shuffle;#}
+{#        var element = document.querySelector('.shuffle-container');#}
+{##}
+{#        var shuffleInstance = new Shuffle(element, {#}
+{#          itemSelector: '.brand-item'#}
+{##}
+{#        });#}
+{##}
+{#    function handleSearchKeyUp() {#}
+{##}
+{#        var searchString = document.getElementById("uni-search").value;#}
+{#        shuffleInstance.filter(function(element){#}
+{#            return (element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase().indexOf(searchString.toLowerCase()) !== -1;#}
+{#        });#}
+{##}
+{#    }#}
+{##}
+{#</script>#}
 </body>
 
 {% endblock %}
