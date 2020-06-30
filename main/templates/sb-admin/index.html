@@ -94,7 +94,7 @@
             </div>
 
 
-            <div class="row shuffle-container">
+            <div class="row" id="shuffle-container">
 
             {% for brand in allBrands %}
 
@@ -277,25 +277,33 @@
     });
     </script>
 
-{# <script>#}
-{#        var Shuffle = window.Shuffle;#}
-{#        var element = document.querySelector('.shuffle-container');#}
-{##}
-{#        var shuffleInstance = new Shuffle(element, {#}
-{#          itemSelector: '.brand-item'#}
-{##}
-{#        });#}
-{##}
-{#    function handleSearchKeyUp() {#}
-{##}
-{#        var searchString = document.getElementById("uni-search").value;#}
-{#        shuffleInstance.filter(function(element){#}
-{#            return (element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase().indexOf(searchString.toLowerCase()) !== -1;#}
-{#        });#}
-{##}
-{#    }#}
-{##}
-{#</script>#}
+ <script>
+     var all_columns = document.getElementsByClassName("brand-item");
+
+    function handleSearchKeyUp() {
+
+        let searchString = document.getElementById("uni-search").value;
+
+        if(searchString!==""){
+            let brandRow = document.getElementById("shuffle-container");
+            brandRow.innerHTML = "" ;
+            for( let i ; i< all_columns.length; i++){
+                if(
+                    (
+                    all_columns[i].getAttribute("data-title")+
+                    " - " +
+                    all_columns[i].getAttribute("data-country")
+                    ).toLowerCase().indexOf(searchString.toLowerCase()) !== -1 ){
+
+                    brandRow.appendChild(all_columns[i]);
+                }
+            }
+        }
+
+
+    }
+
+</script>
 </body>
 
 {% endblock %}
