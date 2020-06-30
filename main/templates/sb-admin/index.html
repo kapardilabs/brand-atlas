@@ -92,9 +92,9 @@
                        onkeyup="handleSearchKeyUp();" placeholder="Search a phrase in your brand or country ...">
             </div>
             <!-- Content Row -->
-        <div class="shuffle-container">
+        <div class="">
 
-            <div class="row">
+            <div class="row shuffle-container">
 
             {% for brand in allBrands %}
             <div class="col-xl-3 col-md-3 mb-4 brand-item" data-country="{{ brand.origin_country }}" data-title="{{ brand.name }}">
@@ -227,10 +227,6 @@
                 </div>
               </div>
             </div>
-                {% if forloop.counter|divisibleby:4 %}
-            </div>
-            <div class="row">
-                {% endif %}
               {% endfor %}
               </div>
 
