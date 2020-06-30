@@ -85,11 +85,16 @@
             {% endfor %}
 
         {% endif %}
-          <!-- Content Row -->
-          <div class="row">
+
+        <div class="content-wrapper">
+            <div class="alert alert-primary">
+                <input type="text" maxlength="100" id="uni-search" class="form-control" onkeyup="handleSearchKeyUp(e);">
+            </div>
+            <!-- Content Row -->
+          <div class="row shuffle-row">
 
             {% for brand in allBrands %}
-            <div class="col-xl-3 col-md-3 mb-4">
+            <div class="col-xl-3 col-md-3 mb-4 brand-item" data-country="{{ brand.origin_country }}" data-title="{{ brand.name }}">
                 <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -221,10 +226,12 @@
             </div>
                 {% if forloop.counter|divisibleby:4 %}
             </div>
-            <div class="row">
+            <div class="row shuffle-row">
                 {% endif %}
               {% endfor %}
               </div>
+        </div>
+
         </div>
           {% endblock %}
         <!-- /.container-fluid -->
@@ -257,6 +264,8 @@
   <script src="https://cdn.jsdelivr.net/combine/npm/startbootstrap-sb-admin-2@4.1.1/vendor/jquery/jquery.min.js,npm/startbootstrap-sb-admin-2@4.1.1/vendor/bootstrap/js/bootstrap.bundle.min.js,npm/startbootstrap-sb-admin-2@4.1.1/vendor/jquery-easing/jquery.easing.min.js,npm/startbootstrap-sb-admin-2@4.1.1/js/sb-admin-2.min.js,npm/startbootstrap-sb-admin-2@4.1.1/vendor/chart.js/Chart.min.js,npm/startbootstrap-sb-admin-2@4.1.1/js/demo/chart-area-demo.min.js,npm/startbootstrap-sb-admin-2@4.1.1/js/demo/chart-bar-demo.min.js,npm/startbootstrap-sb-admin-2@4.1.1/js/demo/chart-pie-demo.min.js,npm/startbootstrap-sb-admin-2@4.1.1/js/demo/datatables-demo.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/shufflejs@5.2.3/dist/shuffle.min.js"></script>
 <script>$(document).ready(function() {
         $('#sourceCategory').select2({
             tags:true
@@ -267,14 +276,23 @@
     </script>
 
  <script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+        var Shuffle = window.Shuffle;
+        var element = document.querySelector('.shuffle-row');
+
+        var shuffleInstance = new Shuffle(element, {
+          itemSelector: '.brand-item'
+
+        });
+
+    function handleSearchKeyUp(e) {
+
+        var searchString = e.target.value;
+        shuffleInstance.filter(function(element){
+            return element.getAttribute("data-title").includes(searchString) || element.getAttribute("data-country").includes(searchString);
+        });
+
+    }
+
 </script>
 </body>
 
