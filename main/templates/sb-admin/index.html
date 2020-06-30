@@ -86,13 +86,15 @@
 
         {% endif %}
 
-        <div class="content-wrapper shuffle-row">
+        <div class="content-wrapper">
             <div class="alert alert-primary">
                 <input type="text" maxlength="100" id="uni-search" class="form-control"
                        onkeyup="handleSearchKeyUp();" placeholder="Search a phrase in your brand or country ...">
             </div>
             <!-- Content Row -->
-          <div class="row">
+        <div class="shuffle-container">
+
+            <div class="row">
 
             {% for brand in allBrands %}
             <div class="col-xl-3 col-md-3 mb-4 brand-item" data-country="{{ brand.origin_country }}" data-title="{{ brand.name }}">
@@ -231,6 +233,10 @@
                 {% endif %}
               {% endfor %}
               </div>
+
+
+        </div>
+
         </div>
 
         </div>
@@ -278,7 +284,7 @@
 
  <script>
         var Shuffle = window.Shuffle;
-        var element = document.querySelector('.shuffle-row');
+        var element = document.querySelector('.shuffle-container');
 
         var shuffleInstance = new Shuffle(element, {
           itemSelector: '.brand-item'
