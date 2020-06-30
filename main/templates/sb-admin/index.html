@@ -86,13 +86,13 @@
 
         {% endif %}
 
-        <div class="content-wrapper">
+        <div class="content-wrapper shuffle-row">
             <div class="alert alert-primary">
                 <input type="text" maxlength="100" id="uni-search" class="form-control"
                        onkeyup="handleSearchKeyUp();" placeholder="Search a phrase in your brand or country ...">
             </div>
             <!-- Content Row -->
-          <div class="row shuffle-row">
+          <div class="row">
 
             {% for brand in allBrands %}
             <div class="col-xl-3 col-md-3 mb-4 brand-item" data-country="{{ brand.origin_country }}" data-title="{{ brand.name }}">
@@ -227,7 +227,7 @@
             </div>
                 {% if forloop.counter|divisibleby:4 %}
             </div>
-            <div class="row shuffle-row">
+            <div class="row">
                 {% endif %}
               {% endfor %}
               </div>
@@ -288,9 +288,10 @@
     function handleSearchKeyUp() {
 
         var searchString = document.getElementById("uni-search").value;
-        console.log("User Searching " + searchString);
         shuffleInstance.filter(function(element){
-            return (element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase().indexOf(searchString)!== -1;
+            console.log(searchString);
+            console.log((element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase());
+            return (element.getAttribute("data-title") + "-" + element.getAttribute("data-country")).toLowerCase().indexOf(searchString) !== -1;
         });
 
     }
