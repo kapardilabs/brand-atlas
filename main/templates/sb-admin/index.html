@@ -278,35 +278,30 @@
     </script>
 
  <script>
-     var all_columns = document.getElementsByClassName("brand-item");
-
+     const all_columns = document.getElementsByClassName("brand-item");
     function handleSearchKeyUp() {
 
         let searchString = document.getElementById("uni-search").value;
 
-        if(searchString!==""){
-            let brandRow = document.getElementById("shuffle-container");
-            brandRow.innerHTML = "" ;
-            for( let i ; i< all_columns.length; i++){
+        if(searchString){
+            for( let i=0 ; i< all_columns.length; i++){
                 if(
                     (
                     all_columns[i].getAttribute("data-title")+
                     " - " +
                     all_columns[i].getAttribute("data-country")
-                    ).toLowerCase().indexOf(searchString.toLowerCase()) !== -1 ){
+                    ).toLowerCase().indexOf(searchString.toLowerCase()) > -1 ){
 
-                    brandRow.innerHTML += all_columns[i].outerHTML;
+                    all_columns[i].style.display = "";
+                }
+                else{
+                    all_columns[i].style.display = "None";
                 }
             }
         }
         else {
-            let brandRow = document.getElementById("shuffle-container");
-            brandRow.innerHTML = "" ;
-            for( let i ; i< all_columns.length; i++){
-                if(true){
-
-                    brandRow.innerHTML += all_columns[i].outerHTML;
-                }
+            for( let i=0 ; i< all_columns.length; i++){
+                   all_columns[i].style.display = "";
             }
         }
 
